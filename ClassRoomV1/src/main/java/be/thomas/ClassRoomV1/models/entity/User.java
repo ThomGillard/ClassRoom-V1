@@ -1,6 +1,6 @@
 package be.thomas.ClassRoomV1.models.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.*;§
 import lombok.Getter;
 import lombok.Setter;
 

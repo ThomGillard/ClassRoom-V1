@@ -1,13 +1,13 @@
 package be.thomas.ClassRoomV1.service.impl;
 
 import org.springframework.stereotype.Service;
-import technobel.bart.laboschool.exception.NotFoundException;
-import technobel.bart.laboschool.models.dto.RequestDTO;
-import technobel.bart.laboschool.models.entity.Request;
-import technobel.bart.laboschool.models.form.request.RequestNewForm;
-import technobel.bart.laboschool.repository.RequestRepository;
-import technobel.bart.laboschool.service.RequestService;
-import technobel.bart.laboschool.service.mapper.RequestMapper;
+import be.thomas.ClassRoomV1.exceptions.NotFoundException;
+import be.thomas.ClassRoomV1.models.dto.RequestDTO;
+import be.thomas.ClassRoomV1.models.entity.Request;
+import be.thomas.ClassRoomV1.models.form.RequestNewForm;
+import be.thomas.ClassRoomV1.repository.RequestRepository;
+import be.thomas.ClassRoomV1.service.RequestService;
+import be.thomas.ClassRoomV1.service.mapper.RequestMapper;
 
 import java.util.List;
 
