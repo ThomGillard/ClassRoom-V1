@@ -5,20 +5,25 @@ import be.thomas.ClassRoomV1.exceptions.NotFoundException;
 import be.thomas.ClassRoomV1.models.dto.RequestDTO;
 import be.thomas.ClassRoomV1.models.entity.Request;
 import be.thomas.ClassRoomV1.models.form.RequestNewForm;
+import be.thomas.ClassRoomV1.repository.EquipmentRepository
 import be.thomas.ClassRoomV1.repository.RequestRepository;
 import be.thomas.ClassRoomV1.service.RequestService;
 import be.thomas.ClassRoomV1.service.mapper.RequestMapper;
 
+import java.util.HashSet;
 import java.util.List;
+
 
 @Service
 public class RequestServiceImpl implements RequestService {
 
     private final RequestRepository requestRepository;
+    private final EquipmentRepository equipmentRepository;
     private final RequestMapper mapper;
 
-    public RequestServiceImpl(RequestRepository requestRepository, RequestMapper mapper) {
+    public RequestServiceImpl(RequestRepository requestRepository, EquipmentRepository equipmentRepository, RequestMapper mapper) {
         this.requestRepository = requestRepository;
+        this.equipmentRepository = equipmentRepository;
         this.mapper = mapper;
     }
 
@@ -42,6 +47,9 @@ public class RequestServiceImpl implements RequestService {
             throw new IllegalArgumentException("form should not be null");
 
         Request entity = mapper.toEntity(form);
+        entity.setEquipments(
+                new HashSet<>(equipmentRepository.findAllById(form.getEquipmentsId()))
+        );
         requestRepository.save( entity );
     }
 }

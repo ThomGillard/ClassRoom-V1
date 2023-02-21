@@ -8,29 +8,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import technobel.bart.laboschool.models.form.request.RequestNewForm;
-import technobel.bart.laboschool.service.RequestService;
+import be.thomas.ClassRoomV1.models.form.RequestNewForm;
+import be.thomas.ClassRoomV1.service.RequestService;
+import be.thomas.ClassRoomV1.service.EquipmentService;
+
+
+
 
 @Controller
 @RequestMapping("/request")
 public class RequestController {
     private final RequestService requestService;
+    private final EquipmentService equipmentService;
 
-    public RequestController(RequestService requestService) {
+    public RequestController(RequestService requestService, EquipmentService equipmentService) {
         this.requestService = requestService;
+        this.equipmentService = equipmentService;
     }
 
     //GET - /request/all
     @GetMapping("/all")
     public String getAll(Model model){
         model.addAttribute("list", requestService.getAll());
-        return "request/display-all";
+        return "request/display-waiting";
     }
 
     //GET - /request/add
     @GetMapping("/add")
     public String insertForm(Model model){
         model.addAttribute("form", new RequestNewForm());
+        model.addAttribute("equipments", equipmentService.getAll());
         return "request/new-form";
     }
 

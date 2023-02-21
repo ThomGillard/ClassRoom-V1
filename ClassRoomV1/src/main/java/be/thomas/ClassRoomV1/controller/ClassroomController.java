@@ -5,14 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import be.thomas.ClassRoomV1.service.ClassroomService;
+import be.thomas.ClassRoomV1.service.EquipmentService;
 
 @Controller
 @RequestMapping("/classroom")
 public class ClassroomController {
     private final ClassroomService classroomService;
 
-
-    public ClassroomController(ClassroomService classroomService) {
+    public ClassroomController(ClassroomService classroomService, EquipmentService equipmentService) {
         this.classroomService = classroomService;
     }
 

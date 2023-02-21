@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+
 @Entity
 @Setter @Getter
 public class Request {
@@ -37,4 +38,13 @@ public class Request {
             inverseJoinColumns = @JoinColumn(name = "equipement_id"))
     private Set<Equipment> equipments = new LinkedHashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "validator_id")
+    private User validator;
+
 }
+
