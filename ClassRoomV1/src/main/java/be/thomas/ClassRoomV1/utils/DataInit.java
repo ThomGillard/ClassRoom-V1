@@ -1,7 +1,5 @@
 package be.thomas.ClassRoomV1.utils;
 
-import be.thomas.ClassRoomV1.models.entity.ClassRoom;
-import be.thomas.ClassRoomV1.repository.Repository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;

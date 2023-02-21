@@ -2,7 +2,8 @@ package be.thomas.ClassRoomV1.models.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import org.apache.catalina.connector.Request;
+import technobel.bart.laboschool.models.entity.Equipment;
+import technobel.bart.laboschool.models.entity.Request;
 
 import java.util.Set;
 
@@ -18,4 +19,6 @@ public class ClassroomDTO {
     private boolean teacherOnly;
 
     private Set<Request> request;
+
+    private Set<Equipment> equipements;
 }

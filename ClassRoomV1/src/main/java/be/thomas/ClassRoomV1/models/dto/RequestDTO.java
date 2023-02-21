@@ -2,6 +2,8 @@ package be.thomas.ClassRoomV1.models.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import technobel.bart.laboschool.models.entity.Classroom;
+import technobel.bart.laboschool.models.entity.Equipment;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -20,5 +22,7 @@ public class RequestDTO {
 
     private String refuse;
 
-    private Set<ClassroomDTO> request;
+    private Classroom classroom;
+
+    private Set<Equipment> equipments;
 }

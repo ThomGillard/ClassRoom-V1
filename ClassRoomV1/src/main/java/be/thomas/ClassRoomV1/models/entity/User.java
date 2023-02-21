@@ -4,41 +4,32 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "\"User\"")
-@Getter @Setter
-public class User extends BaseEntity<Long> {
+@Setter @Getter
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-    @Column(nullable = false)
+    private String lastname;
+    private String firstname;
     private String password;
-
-    @Column(nullable = false)
     private String login;
+    private String email;
+    private String phone;
+    private String Adresse;
+    private Role role;
 
-    @Column(nullable = false)
-    private String role;
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private Set<Request> requests = new LinkedHashSet<>();
 
-    @Column(nullable = false)
-    private String firstName;
-    @Column(nullable = false)
-    private String lastName;
-
-    @Column(nullable = false)
-    private LocalDate birthdate;
-
-    @OneToOne(orphanRemoval = true)
-    @JoinTable(name = "\"user\"_class_room",
-            joinColumns = @JoinColumn(name = "user_user_id"),
-            inverseJoinColumns = @JoinColumn(name = "class_room_classroom_id"))
-
-    private ClassRoom classRoom;
+    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private Set<Request> validate = new LinkedHashSet<>();
 
 }
